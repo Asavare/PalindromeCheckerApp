@@ -4,26 +4,32 @@
  * Version          : 1.0
  */
 
-public class UseCase2PalindromeCheckerApp {
+/*
+ * Application Name : Palindrome Checker App
+ * Use Case         : UC3 - Palindrome Check Using String Reverse
+ * Version          : 1.0
+ */
+
+public class UseCase3PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string (String Literal)
-        String word = "madam";
+        // Original String
+        String original = "level";
 
-        // Variable to store reversed string
+        // Reversed String (Initially Empty)
         String reversed = "";
 
-        // Reverse the string using loop
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        // Check palindrome condition using if-else
-        if (word.equals(reversed)) {
-            System.out.println("The given string \"" + word + "\" is a Palindrome.");
+        // Compare original and reversed using equals()
+        if (original.equals(reversed)) {
+            System.out.println("The string \"" + original + "\" is a Palindrome.");
         } else {
-            System.out.println("The given string \"" + word + "\" is NOT a Palindrome.");
+            System.out.println("The string \"" + original + "\" is NOT a Palindrome.");
         }
 
         System.out.println("Program executed successfully.");
