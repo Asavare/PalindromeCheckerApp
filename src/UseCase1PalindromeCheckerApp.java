@@ -1,37 +1,33 @@
 /*
  * Application Name : Palindrome Checker App
- * Use Case         : UC6 - Queue + Stack Based Palindrome Check
+ * Use Case         : UC7 - Deque-Based Optimized Palindrome Checker
  * Version          : 1.0
  */
 
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
-public class UseCase6PalindromeCheckerApp {
+public class UseCase7PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Original String
-        String input = "racecar";
+        String input = "level";
 
-        // Create Queue (FIFO)
-        Queue<Character> queue = new LinkedList<>();
+        // Create Deque
+        Deque<Character> deque = new LinkedList<>();
 
-        // Create Stack (LIFO)
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue and push characters
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);    // enqueue
-            stack.push(ch);   // push
+            deque.addLast(input.charAt(i));
         }
 
-        // Compare dequeue vs pop
+        // Flag to track palindrome status
         boolean isPalindrome = true;
-        while (!queue.isEmpty()) {
-            if (!queue.remove().equals(stack.pop())) {
+
+        // Compare front and rear until deque is empty
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
                 isPalindrome = false;
                 break;
             }
@@ -47,4 +43,5 @@ public class UseCase6PalindromeCheckerApp {
         System.out.println("Program executed successfully.");
     }
 }
+
 
