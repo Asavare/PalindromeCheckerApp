@@ -1,40 +1,42 @@
 /*
  * Application Name : Palindrome Checker App
- * Use Case         : UC9 - Recursive Palindrome Checker
+ * Use Case         : UC10 - Case-Insensitive & Space-Ignored Palindrome
  * Version          : 1.0
  */
 
-public class UseCase9PalindromeCheckerApp {
+public class UseCase10PalindromeCheckerApp {
 
-    // Recursive function to check palindrome
-    public static boolean isPalindromeRecursive(String str, int start, int end) {
-        // Base condition: if start >= end, string is palindrome
-        if (start >= end) {
-            return true;
+    public static boolean isPalindrome(String input) {
+        // Normalize string: remove spaces and convert to lowercase
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        // Two-pointer approach
+        int start = 0;
+        int end = normalized.length() - 1;
+
+        while (start < end) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
-        // If mismatch found, not a palindrome
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-        // Recursive call for next characters
-        return isPalindromeRecursive(str, start + 1, end - 1);
+        return true;
     }
 
     public static void main(String[] args) {
-        String input = "deified";
+        String input = "A man a plan a canal Panama";
 
-        // Call recursive palindrome checker
-        boolean result = isPalindromeRecursive(input, 0, input.length() - 1);
-
-        // Display result
-        if (result) {
-            System.out.println("The string \"" + input + "\" is a Palindrome.");
+        // Check palindrome
+        if (isPalindrome(input)) {
+            System.out.println("The string \"" + input + "\" is a Palindrome (ignoring case and spaces).");
         } else {
-            System.out.println("The string \"" + input + "\" is NOT a Palindrome.");
+            System.out.println("The string \"" + input + "\" is NOT a Palindrome (ignoring case and spaces).");
         }
 
         System.out.println("Program executed successfully.");
     }
 }
+
 
 
