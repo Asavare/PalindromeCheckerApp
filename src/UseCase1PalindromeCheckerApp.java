@@ -1,34 +1,34 @@
 /*
  * Application Name : Palindrome Checker App
- * Use Case         : UC4 - Character Array Based Palindrome Check
+ * Use Case         : UC5 - Stack-Based Palindrome Checker
  * Version          : 1.0
  */
 
-public class UseCase4PalindromeCheckerApp {
+import java.util.Stack;
+
+public class UseCase5PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Original String
-        String input = "radar";
+        String input = "madam";
 
-        // Convert String to Character Array
-        char[] characters = input.toCharArray();
+        // Create Stack of Characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer variables
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
 
-        // Flag to track palindrome status
+        // Compare characters by popping from stack
         boolean isPalindrome = true;
 
-        // Two-pointer comparison
-        while (start < end) {
-            if (characters[start] != characters[end]) {
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
         // Display Result
