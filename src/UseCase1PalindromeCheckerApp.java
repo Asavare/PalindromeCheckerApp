@@ -1,31 +1,37 @@
 /*
  * Application Name : Palindrome Checker App
- * Use Case         : UC5 - Stack-Based Palindrome Checker
+ * Use Case         : UC6 - Queue + Stack Based Palindrome Check
  * Version          : 1.0
  */
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
-public class UseCase5PalindromeCheckerApp {
+public class UseCase6PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         // Original String
-        String input = "madam";
+        String input = "racecar";
 
-        // Create Stack of Characters
+        // Create Queue (FIFO)
+        Queue<Character> queue = new LinkedList<>();
+
+        // Create Stack (LIFO)
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Enqueue and push characters
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            char ch = input.charAt(i);
+            queue.add(ch);    // enqueue
+            stack.push(ch);   // push
         }
 
-        // Compare characters by popping from stack
+        // Compare dequeue vs pop
         boolean isPalindrome = true;
-
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != stack.pop()) {
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
                 isPalindrome = false;
                 break;
             }
@@ -41,3 +47,4 @@ public class UseCase5PalindromeCheckerApp {
         System.out.println("Program executed successfully.");
     }
 }
+
